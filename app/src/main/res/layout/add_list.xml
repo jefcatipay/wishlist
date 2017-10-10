@@ -42,8 +42,8 @@
         android:layout_height="wrap_content"
         android:text="@string/price"
         android:layout_alignBottom="@+id/view2"
-        android:layout_alignLeft="@+id/etPrice"
-        android:layout_alignStart="@+id/etPrice" />
+android:layout_alignRight="@+id/view2"
+        android:layout_alignTop="@+id/textView" />
 
     <View
         android:layout_below="@id/textView"

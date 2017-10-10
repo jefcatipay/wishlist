@@ -1,21 +1,23 @@
 package com.example.jefkrisfercatipay.wishlist;
 
+import java.io.Serializable;
+
 /**
  * Created by Jef Krisfer Catipay on 10/10/2017.
  */
 
-public class list_model {
+public class wish implements Serializable {
 
     private String listName;
     private String listDesc;
-    private String listPrice;
+    private double listPrice;
     private int image;
 
-    public list_model(){
+    public wish(){
 
     }
 
-    public list_model(String listname, String listDesc, String listPrice, int image){
+    public wish(String listname, String listDesc, double listPrice, int image){
         this.listDesc = listDesc;
         this.listName = listname;
         this.listPrice = listPrice;
@@ -39,11 +41,11 @@ public class list_model {
         this.listDesc = listDesc;
     }
 
-    public String getListPrice() {
+    public double getListPrice() {
         return listPrice;
     }
 
-    public void setListPrice(String listPrice) {
+    public void setListPrice(double listPrice) {
         this.listPrice = listPrice;
     }
 

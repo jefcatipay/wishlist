@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home"
     tools:context="com.example.jefkrisfercatipay.wishlist.MainActivity"
     android:orientation="vertical"
     android:weightSum="1">
@@ -12,13 +14,10 @@
         layout="@layout/toolbar">
     </include>
 
-    <ListView
-        android:id="@+id/list"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        >
-
-
-    </ListView>
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
 
 </LinearLayout>

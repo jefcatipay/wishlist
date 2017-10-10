@@ -17,12 +17,12 @@ public class Detail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.list_detail);
+        setContentView(R.layout.add_list);
 
-        testname= (TextView) findViewById(R.id.tvDname);
-        testdesc= (TextView) findViewById(R.id.tvDdesc);
-        testprice= (TextView) findViewById(R.id.tvDprice);
-        imgDesc= (ImageView) findViewById(R.id.ivDimg);
+        testname= (TextView) findViewById(R.id.etTitle);
+        testdesc= (TextView) findViewById(R.id.etDesc);
+        testprice= (TextView) findViewById(R.id.etPrice);
+        imgDesc= (ImageView) findViewById(R.id.imageView);
 
         Bundle bundle =getIntent().getExtras();
         if(bundle!=null){
