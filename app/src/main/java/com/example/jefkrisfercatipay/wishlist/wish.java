@@ -1,23 +1,28 @@
 package com.example.jefkrisfercatipay.wishlist;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+
+import java.io.File;
 import java.io.Serializable;
 
 /**
  * Created by Jef Krisfer Catipay on 10/10/2017.
  */
 
+
 public class wish implements Serializable {
 
     private String listName;
     private String listDesc;
     private double listPrice;
-    private int image;
+    private String image;
 
     public wish(){
 
     }
 
-    public wish(String listname, String listDesc, double listPrice, int image){
+    public wish(String listname, String listDesc, double listPrice, String image){
         this.listDesc = listDesc;
         this.listName = listname;
         this.listPrice = listPrice;
@@ -49,11 +54,11 @@ public class wish implements Serializable {
         this.listPrice = listPrice;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

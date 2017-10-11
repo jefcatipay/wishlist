@@ -28,13 +28,13 @@ import java.util.Random;
  * Created by Jef Krisfer Catipay on 10/10/2017.
  */
 
-public class addList extends AppCompatActivity {
+public class Edit extends AppCompatActivity {
 
     private static final String KEY_TEXT = "key_text";
+    private static final String KEY_TEST = "EDIT";
     private static final int CAMERA_REQUEST = 1888;
     TextView name, desc, price;
     ImageView image;
-
     String p= "";
     private Toolbar toolbar;
 
@@ -47,6 +47,17 @@ public class addList extends AppCompatActivity {
         setSupportActionBar(toolbar);
         findViews();
 
+        Intent mintent = getIntent();
+        wish w = (wish) mintent.getSerializableExtra(KEY_TEST);
+        name.setText(w.getListName());
+        desc.setText(w.getListDesc());
+        price.setText(Double.toString(w.getListPrice()));
+
+        File file = new File(w.getImage());
+
+        Bitmap bmp = BitmapFactory.decodeFile(file.getAbsolutePath());
+        image.setImageBitmap(bmp);
+
         image.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -57,30 +68,27 @@ public class addList extends AppCompatActivity {
 
         });
 
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         try {
-          //  Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
             String temp1 = name.getText().toString();
             String temp2 = desc.getText().toString();
             Double temp3 = Double.parseDouble(price.getText().toString());
 
-            Intent data = new Intent(addList.this, MainActivity.class);
+            Intent data = new Intent(Edit.this, Detail.class);
             Bundle extra = new Bundle();
-
             wish object = new wish(temp1,temp2,temp3,p);
 
-          //  Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
             extra.putSerializable(KEY_TEXT, object);
             data.putExtras(extra);
             setResult(Activity.RESULT_OK, data);
 
-        //    Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
             finish();
         }
         catch(Exception z){
@@ -126,7 +134,6 @@ public class addList extends AppCompatActivity {
         }
 
     }
-
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
@@ -141,7 +148,6 @@ public class addList extends AppCompatActivity {
         return cursor.getString(idx);
     }
 
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == CAMERA_REQUEST && resultCode == RESULT_OK){
             Bundle extras = data.getExtras();
@@ -154,7 +160,7 @@ public class addList extends AppCompatActivity {
             Bitmap bmp = BitmapFactory.decodeFile(finalFile.getAbsolutePath());
             image.setImageBitmap(bmp);
 
-         //   Toast.makeText(this, "end result", Toast.LENGTH_SHORT).show();
+            //   Toast.makeText(this, "end result", Toast.LENGTH_SHORT).show();
         }
     }
 }

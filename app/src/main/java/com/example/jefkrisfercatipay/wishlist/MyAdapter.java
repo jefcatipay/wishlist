@@ -1,16 +1,18 @@
 package com.example.jefkrisfercatipay.wishlist;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -46,13 +48,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
         return new MyViewHolder(iview);
     }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+
+
         wish list = wishList.get(position);
         holder.wName.setText(list.getListName());
         holder.wDesc.setText(list.getListDesc());
         holder.wPrice.setText(Double.toString(list.getListPrice()));
-        holder.wImage.setImageResource(list.getImage());
+        File file = new File(list.getImage());
+        Bitmap bmp = BitmapFactory.decodeFile(file.getAbsolutePath());
+        holder.wImage.setImageBitmap(bmp);
 
     }
     @Override
@@ -60,57 +67,3 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         return wishList.size();
     }
 }
-
-
-//public class MyAdapter extends ArrayAdapter<String> {
-//
-//
-//    private List<wish> wishList;
-//    private Context context;
-//
-//    public MyAdapter(Context context,List<wish> wishList) {
-//        super(context, R.layout.listview);
-//
-//        this.context = context;
-//        this.wishList = wishList;
-//}
-//
-//    @Override
-//    public int getCount() {
-//        return wishList.size()
-//    }
-//
-//    @NonNull
-//    @Override
-//    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//                ViewHolder viewHolder = new ViewHolder();
-//        if (convertView == null)
-//        {
-//
-//            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            convertView = layoutInflater.inflate(R.layout.listview,parent,false);
-//
-//            viewHolder.listName =(TextView) convertView.findViewById(R.id.tvDname);
-//            viewHolder.listDesc =(TextView) convertView.findViewById(R.id.tvDdesc);
-//            viewHolder.listPrice =(TextView) convertView.findViewById(R.id.tvDprice);
-//            viewHolder. imgDesc=(ImageView) convertView.findViewById(R.id.ivThumbnail);
-//
-//            convertView.setTag(viewHolder);
-//        }
-//        else{
-//            viewHolder= (ViewHolder) convertView.getTag();
-//        }
-//
-//        viewHolder.imgDesc.setImageResource(wishList);
-//        viewHolder.listName.setText(listName[position]);
-//        viewHolder.listPrice.setText(Double.toString(listPrice[position]));
-//        viewHolder.listDesc.setText(listDesc[position]);
-//        return convertView;
-//
-//    }
-//    static class ViewHolder
-//    {
-//        TextView listName, listDesc, listPrice;
-//        ImageView imgDesc;
-//    }
-//}

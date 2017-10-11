@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jefkrisfercatipay.wishlist">
+    <uses-feature android:name="android.hardware.camera" android:required="true"></uses-feature>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -19,6 +23,7 @@
         </activity>
         <activity android:name=".Detail"></activity>
         <activity android:name=".addList"></activity>
+        <activity android:name=".Edit"></activity>
     </application>
 
 </manifest>
